@@ -1,0 +1,250 @@
+.hero__top-subtitle {
+  font-size: 1.4em;
+  letter-spacing: 0.3em;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+}
+summary.header__icon.header__icon--search {
+  padding-right: 15px;
+  padding-top: 1px;
+}
+.list-menu__item {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  background: #fff;
+}
+.menu-drawer__menu li {
+  border-top: 1px solid #e8e8e1;
+  margin-bottom: 0 !important;
+  margin: 0 20px;
+}
+.close-drawer span svg {
+  max-width: 20px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.close-drawer span {
+  padding: 30px 30px 0;
+  text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+h2.rich-text__heading.rte.inline-richtext {
+  text-transform: uppercase;
+}
+.rich-text__text p {
+  font-size: 1.3em;
+  letter-spacing: 0.025em;
+  line-height: 1.4;
+}
+.cart__empty-text {
+  margin: 4.5rem 0 2rem;
+  text-transform: uppercase;
+}
+.collection-list-wrapper .card__content {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+}
+.collection-list-wrapper h3.card__heading {
+  max-width: fit-content;
+  margin: 0 auto;
+  background: #fff;
+  padding: 10px 20px;
+}
+.title-wrapper--no-top-margin {
+  justify-content: center;
+}
+h2.title.inline-richtext {
+  text-align: center;
+}
+.card__heading,
+.main__title {
+  text-align: center;
+}
+.card-information .price {
+  text-align: center;
+}
+.product-card-wrapper .card-information {
+  margin-top: 5px;
+}
+.product-card-wrapper .card__content {
+  margin-top: 10px;
+}
+span.menu-title:after {
+  border-right: 1px solid #000;
+  width: 5px;
+  height: 19px;
+  font-size: 10px;
+  border: 1px solid #000;
+}
+.main__title h2 {
+  font-size: 32px;
+}
+.footer__content-bottom-wrapper {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.footer__localization h2 {
+  display: none;
+}
+.disclosure__button:after,
+.disclosure__button:before {
+  display: none;
+}
+button.disclosure__button.localization-form__select.localization-selector {
+  margin-bottom: 0;
+  gap: 8px;
+}
+li.list-payment__item svg {
+  width: 60px;
+  height: 40px;
+}
+.localization-selector + .disclosure__list-wrapper {
+  opacity: 1;
+  animation: animateLocalization var(--duration-default) ease;
+  width: 100%;
+}
+.currency-flag {
+  margin: -0.55rem;
+  transform: scale(0.55);
+}
+button.disclosure__button.localization-form__select.localization-selector span {
+  font-size: 16px;
+}
+.copyright__content a {
+  font-size: 12px;
+}
+.announcement-bar__message {
+  letter-spacing: 0.025em;
+  font-family: "Twentieth Century";
+}
+img.image_banner {
+  width: 100%;
+  height: calc(90vh - 250px);
+  object-fit: cover;
+  opacity: 0.8;
+}
+.collection_image {
+  width: 100%;
+  background: #000;
+  line-height: 0;
+}
+.collection_image_title {
+  width: 100%;
+}
+.collection_image_title .collection_title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+h1.collection-hero__title {
+  font-size: 54px;
+  color: #ffff;
+  line-height: 60px;
+  text-align: center;
+}
+.card-wrapper.product-card-wrapper .card__heading {
+  font-family: Twentieth Century;
+}
+a.pagination__item.pagination__item--prev,
+a.pagination__item.pagination__item--next {
+  background: #000;
+  color: #fff;
+}
+.back_button {
+  text-align: center;
+}
+.cart-review-items {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  justify-content: center;
+}
+.trust_cart {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.trust_cart img {
+  max-width: 200px;
+  margin: 0 auto;
+  min-height: 40px;
+}
+.cart-drawer .cart__checkout-button {
+  font-weight: 700;
+}
+span.product__price-savings {
+  padding-right: 20px;
+  color: #c20000;
+}
+.collection span.product__price-savings {
+  padding-left: 10px;
+}
+.contact__button {
+  text-align: center;
+}
+h1.main-page-title.page-title.h0 {
+  text-align: center;
+}
+.footer-block__details-content .list-menu__item {
+  text-transform: capitalize;
+  letter-spacing: 0.025em;
+  background: #fff;
+}
+p.predictive-search__item-heading.h5 {
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: 1;
+}
+  .product-grid-container .card__information, .card__information {
+    padding-top: 0;
+}
+.subcollections-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 40px;
+}
+.subcollection-item img {
+    width: 100%;
+}
+.subcollection-item {
+    position: relative;
+    line-height: 0;
+}
+.collection_ttitle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+      z-index: 9;
+}
+.collection_ttitle h3 {
+    font-size: 12px;
+    padding: 5px 10px;
+    letter-spacing: 0;
+    line-height: 16px;
+}
+.subcollection-item a:after {
+    background-color: #000;
+    bottom: 0;
+    content: "";
+    left: 0;
+    opacity: 0.1;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: opacity .8s ease;
+    z-index: auto;
+}
+.overflow-hidden-desktop .collection_ttitle {
+   z-index: 0;
+}

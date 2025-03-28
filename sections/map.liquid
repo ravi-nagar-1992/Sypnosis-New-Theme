@@ -1,0 +1,179 @@
+{{ 'map.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign display_map = false
+  assign onboarding = false
+  assign bg_image = section.settings.background_image
+
+  if section.settings.api_key == blank and bg_image == blank
+    assign onboarding = true
+  endif
+  if section.settings.api_key != blank and section.settings.map_address
+    assign display_map = true
+  endif
+-%}
+
+{%- style -%}
+  .testimonials-{{ section.id }} {
+    background-color: {{ section.settings.color_background }};
+    color: {{ section.settings.color_text }};
+  }
+}
+{%- endstyle -%}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: calc({{ section.settings.padding_top }}px * 0.75);
+    padding-bottom: calc({{ section.settings.padding_bottom }}px  * 0.75);
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="section-{{ section.id }}-padding">
+<div class="map-section {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %} display-map--{{ display_map }} {% if bg_image != blank %}bg-image--true{% endif %}"
+  data-section-id="{{ section.id }}"
+  data-section-type="map"
+  data-aos="map-section__animation"
+>
+  {%- if section.settings.title != blank or section.settings.address != blank -%}
+    <div class="map-section__overlay-wrapper">
+      <div class="animation-cropper">
+        <div class="animation-contents">
+          <div class="map-section__overlay">
+            {%- if section.settings.map_title != blank -%}
+              <h3 class="text-spacing">{{ section.settings.map_title | escape }}</h3>
+            {%- endif -%}
+            {%- if section.settings.address != blank -%}
+              <div class="rte-setting text-spacing">{{ section.settings.address }}</div>
+              {%- if section.settings.show_button -%}
+                <a href="https://maps.google.com?daddr={{ section.settings.map_address | escape }}" class="btn button  btn--small" target="_blank" rel="noopener" aria-label="{{ section.settings.map_title }}">Get Directions</a>
+              {%- endif -%}
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+    </div>
+  {%- endif -%}
+  <a class="map-section__link" href="https://www.google.com/maps/place/{{ section.settings.map_address | escape }}" target="_blank" rel="noopener" aria-label="{{ section.settings.map_address | escape }}"></a>
+  {%- if onboarding -%}
+    <div class="map-onboarding">
+      {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+    </div>
+  {%- endif -%}
+  <div
+    id="Map-{{ section.id }}"
+    data-map
+    class="map-section__container map-{{ section.id }} {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+    data-address-setting="{{ section.settings.map_address | escape }}"
+    data-api-key="{{ section.settings.api_key }}">
+    {% if bg_image.src != blank %}
+      {%- unless display_map -%}
+        {% comment %} Full width image so don't need to adjust sizes attribute, fallback is 100vw {% endcomment %}
+        {%- render 'image-element',
+          img: bg_image,
+          img_width: 1800,
+          loading: section.settings.lazyload_images,
+        -%}
+        {%- style -%}
+          @media only screen and (max-width: 750px) {
+            .map-{{ section.id }} {
+              padding-top: {{ 1 | divided_by: bg_image.aspect_ratio | times: 100 }}%;
+            }
+          }
+        {%- endstyle -%}
+      {%- endunless -%}
+    {% endif %}
+  </div>
+</div>
+ </div>
+</div>
+
+{% schema %}
+{
+  "name": "Map",
+  "class": "index-section--flush",
+  "settings": [
+    {
+      "id": "map_title",
+      "type": "text",
+      "label": "Map Title",
+      "default": "Our retail store"
+    },
+    {
+      "id": "address",
+      "type": "richtext",
+      "label": "Address",
+      "default": "<p>301 Front St W<br>Toronto, Canada</p><p>Mon - Fri, 8:30am - 10:30pm<br>Saturday, 8:30am - 10:30pm<br>Sunday, 8:30am - 10:30pm</p>"
+    },
+    {
+      "id": "map_address",
+      "type": "text",
+      "label": "Map Address",
+      "info": "Map Address",
+      "default": "301 Front St W, Toronto, ON M5V 2T6"
+    },
+    {
+      "id": "show_button",
+      "type": "checkbox",
+      "label": "Show button",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image",
+      "info": "Background Image"
+    },
+    {
+      "type": "checkbox",
+      "id": "lazyload_images",
+      "label": "lazyload images",
+      "info": "lazyload images",
+      "default": true
+    },
+        {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 52
+    }
+  ],
+  "presets": [
+    {
+      "name": "Map"
+    }
+  ],
+  "disabled_on": {
+    "groups": ["footer", "header", "custom.popups"]
+  }
+}
+{% endschema %}

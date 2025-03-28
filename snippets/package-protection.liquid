@@ -1,0 +1,38 @@
+{{ 'package-protection.css' | asset_url | stylesheet_tag }}
+
+<!--cart-protection -->
+   <div class="package-protection">
+             <div class="package-image package_same">
+                {% comment %} <a href="{{ item.product.url | within: collections.all }}"
+                 class="{% if item.image != blank %}product--wrapper {% endif %}cart__image media-wrapper image-link"
+                 style="padding-top:{{ 1 | divided_by: item.image.aspect_ratio | times: 100 }}%;">{% endcomment %} 
+                  {% comment %}{{ 'package_insurance.png' | asset_img_url }}{% endcomment %}
+               <img src="https://cdn.shopify.com/s/files/1/0552/3013/6511/files/Zekerheidspakket.png?v=1709037769" />
+                {% comment %} </a>{% endcomment %} 
+             </div>
+             <div class="package-name package_same">
+                <div class="cart__item-meta spacer-auto-xs">
+                   <div class="cart__product-name h6 flex justify-between spacer-bottom-xs mct-package-item">
+                      <!--<a href="/collections/all/products/pakket-bescherming">-->
+                      <b>Security package</b>
+                      <!--</a>-->  
+                   </div>
+                   <small>Protection against loss, theft and damage €6.95</small>
+                </div>
+             </div>
+              <div class="package-button package_same">
+                <div class="package-protection-btn">
+                  <span>
+                   <label class="switch">
+                      <input type="checkbox" class="packprotection selected"  id="switch2" name="packageprotection"  {%- for item in cart.items -%} {%- if item.variant_id == 42095821488187-%} data-variant-id="42095821488187" checked {%- endif -%} {%- endfor -%}  />
+                      <div class="sliderss round"></div>
+                    </label>
+                  </span>
+                </div>
+              </div>
+          </div>
+       
+<!--cart-protaction-end -->
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>

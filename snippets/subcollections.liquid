@@ -1,0 +1,23 @@
+{%- for link in linklists.main-menu.links -%}
+  {%- if link.url == collection.url and link.links.size > 0 -%}
+    <div class="subcollections page-width">
+     <div class="subcollections-grid">
+        {%- for sublink in link.links -%}
+          {%- assign subcollection = collections[sublink.handle] -%}
+          {%- if subcollection != blank -%}
+            <div class="subcollection-item">
+              <a href="{{ subcollection.url }}">
+                {%- if subcollection.image -%}
+                  <img src="{{ subcollection.image | img_url: 'medium' }}" alt="{{ subcollection.title }}">
+                {%- else -%}
+                  <img src="{{ 'placeholder.jpg' | asset_url }}" alt="Placeholder">
+                {%- endif -%}
+                <div class="collection_ttitle"><h3>{{ subcollection.title }}</h3></div>
+              </a>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  {%- endif -%}
+{%- endfor -%}

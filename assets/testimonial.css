@@ -1,0 +1,75 @@
+.testimonials-section .section-header {
+    text-align: center;
+}
+.flickity-slider .testimonials-slide {
+    display: block;
+    opacity: 1;
+}
+.testimonials-slide {
+    display: none;
+    opacity: 0;
+    padding: 40px 0 55px;
+    width: 33%;
+}
+.testimonials-slide.is-selected .testimonials-slider__text {
+    box-shadow: 0 10px 25px #0000001a;
+    position: relative;
+    transform: scale(1.1);
+    z-index: 10;
+}
+.testimonials-slide .testimonials-slider__text {
+    transform: scale(.95);
+    transition: transform .5s ease,box-shadow .5s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.testimonials-slider__text {
+    background: #fff;
+    color: #000;
+    margin: 0 30px 15px;
+    padding: 30px 15px;
+    font-style: normal;
+}
+.text-spacing, .text-spacing.rte:last-child {
+    margin-bottom: 15px;
+    text-align: center;
+}
+.testimonials-slider__text cite {
+    font-style: normal;
+    font-weight: 700;
+}
+blockquote.testimonials-slider__text {
+    border-left: 0;
+}
+.testimonials-slider {
+    outline-offset: unset;
+    box-shadow: unset;
+}
+.card-wrapper.product-card-wrapper .card__heading {
+    font-family: 'Twentieth Century';
+}
+.testimonials-section {
+    padding: 25.5px 0;
+}
+
+@media only screen and (min-width: 769px) {
+    .testimonial-stars {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+  .testimonials-slider__text {
+        margin: 0;
+        padding: 30px;
+    }
+}
+@media only screen and (max-width: 768px) {
+    .testimonials-slide {
+        width: 100%;
+    }
+      .testimonials-slide.is-selected .testimonials-slider__text {
+        transform: scale(1);
+    }
+}

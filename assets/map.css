@@ -1,0 +1,108 @@
+.index-section--flush {
+    margin: 0;
+}
+.map-section {
+    height: 650px;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+.map-section__overlay-wrapper {
+    height: 100%;
+    position: relative;
+}
+.animation-cropper {
+    display: inline-flex;
+    overflow: hidden;
+}
+.map-section__overlay {
+    background-color: #fff;
+    display: inline-block;
+    margin: 30px;
+    max-width: calc(100% - 60px);
+    padding: 30px;
+    position: relative;
+    width: 100%;
+    z-index: 3;
+}
+.map-section__link {
+    display: block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+}
+[data-aos=map-section__animation].scroll-trigger:not(.scroll-trigger--offscreen) .map-section__container {
+    animation: zoom-fade 2.5s cubic-bezier(.26,.54,.32,1) 0s forwards;
+}
+.display-map--false.bg-image--true .map-section__container {
+    height: 100%;
+    width: 100%;
+}
+.map-section__container {
+    height: 150%;
+    left: 0;
+    margin-bottom: -50%;
+    top: 0;
+    width: 100%;
+}
+.map-section__container {
+    position: absolute!important;
+}
+.display-map--false.bg-image--true .map-section__container img {
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    width: 100%;
+}
+h3.text-spacing {
+    text-transform: uppercase;
+    font-size: 24px;
+    letter-spacing: 0;
+}
+.map-section__overlay .text-spacing {
+    text-align: left;
+}
+.map-section__overlay  .rte-setting.text-spacing{
+   padding-bottom: 20px;
+}
+.map-section__overlay .rte-setting.text-spacing p {
+    padding: 0;
+    margin: 0;
+    letter-spacing: 0.025em;
+    font-size: 18px;
+   line-height: 1.4;
+}
+
+/*Background image animations*/
+@keyframes zoom-fade {
+  from {
+    opacity: 0;
+    transform: scale(1.3,1.3);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1,1);
+  }
+}
+
+@media only screen and (min-width: 769px) {
+    .map-section {
+        height: 500px;
+    }
+  .map-section__overlay {
+    left: 30px;
+    margin-top: 0;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30%;
+}
+  .map-section__container {
+    height: 100%;
+    margin: 0 -30% 0 0;
+    width: 130%;
+}
+}
