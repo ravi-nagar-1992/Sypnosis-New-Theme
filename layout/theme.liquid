@@ -400,8 +400,11 @@
 // Function to check package protection logic
 function checkPackageProtection(cart) {
   const packageProtection = document.querySelector(".package-protection");
-  const drawerFooter = document.querySelector(".drawer__footer");
+   const packageProtection_cart = document.querySelector(".custom_cart-protection");
+   const drawerFooter = document.querySelector(".drawer__footer");
+  const cartFooter = document.querySelector(".cart__footer ");
   const drawerContents = document.querySelector(".drawer__contents");
+  const cartContents = document.querySelector(".cart__contents");
     if (cart.item_count === 1) {
         $.each(cart.items, function (i, v) {
             if (v.variant_id === 42095821488187) {
@@ -409,12 +412,15 @@ function checkPackageProtection(cart) {
                  if (packageProtection) {
                    //alert('hedddd');
                         packageProtection.style.display = "none";
+                        packageProtection_cart.style.display = "none";
                     }
                     if (drawerFooter) {
                         drawerFooter.style.display = "none";
+                        cartFooter.style.display = "none";
                     }
                if (drawerContents) {
                         drawerContents.style.display = "none";
+                        cartContents.style.display = "none";
                     }
             }
         });
@@ -463,20 +469,25 @@ function checkPackageProtection(cart) {
             }
 
    function updateCartTotal() {
-  fetch('/cart.js')
+   fetch('/cart.js')
     .then(response => response.json())
-    .then(cartData => {
-      return fetch(`${window.location.pathname}?section_id=cart-drawer`);
-    })
-    .then(response => response.text())
-    .then(responseText => {
-      const html = new DOMParser().parseFromString(responseText, 'text/html');
-      const cartDrawer = document.querySelector('cart-drawer');
-      const newContent = html.querySelector('cart-drawer');
+    .then(cart => {
+      return fetch(`${window.location.pathname}?section_id=cart-drawer`)
+        .then(response => response.text())
+        .then(responseText => {
+          const html = new DOMParser().parseFromString(responseText, 'text/html');
+          const cartDrawer = document.querySelector('cart-drawer');
+          const newDrawerContent = html.querySelector('cart-drawer');
 
-      if (cartDrawer && newContent) {
-        cartDrawer.innerHTML = newContent.innerHTML;
-      }
+          if (cartDrawer && newDrawerContent) {
+            cartDrawer.innerHTML = newDrawerContent.innerHTML;
+          }
+
+          // Update cart count bubble
+          $('.cart-count-bubble span[aria-hidden="true"]').text(cart.item_count);
+          $('.cart-count-bubble span.visually-hidden').text(`${cart.item_count} item${cart.item_count !== 1 ? 's' : ''}`);
+
+        });
     })
     .catch(error => console.error('Error updating cart drawer:', error));
 }
@@ -515,6 +526,20 @@ function checkPackageProtection(cart) {
               return true;
           });
         });
+         
+        $(document).on('change', '#switch3', function (evt) {
+    evt.preventDefault();
+    if ($(this).is(':checked')) {
+        addPackageProtection();
+    } else {
+        removePackageProtection();
+    }
+
+    setTimeout(() => {
+        location.reload();
+    }, 1000); // Reload after 1 second
+});
+
    </script>
     {% endif %}
   </body>
