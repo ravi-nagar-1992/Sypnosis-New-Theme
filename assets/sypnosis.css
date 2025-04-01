@@ -248,3 +248,6 @@ p.predictive-search__item-heading.h5 {
 .overflow-hidden-desktop .collection_ttitle {
    z-index: 0;
 }
+span.hero__top-subtitle {
+    color: #000;
+}
